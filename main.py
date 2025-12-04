@@ -1,5 +1,7 @@
 #### Imports et définition des variables globales
-
+"""
+Imports et définition des variables globales
+"""
 FILENAME = "listes.csv"
 
 #### Fonctions secondaires
@@ -13,39 +15,77 @@ def read_data(filename):
     Returns:
         list: le contenu du fichier (1 list par ligne)
     """
-    l = []
-    return l
+    res = []
+    with open(filename, mode='r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()            # enlever espaces et \n
+            if line:                       # ignorer les lignes vides
+                numbers = [int(x) for x in line.split(';')]  # convertir chaque morceau en entier
+                res.append(numbers)        # ajouter la sous-liste à res
+    return res
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """
+    Docstring pour get_list_k
+    
+    :param data: Description
+    :param k: Description
+    """
+    return data[k]
 
 def get_first(l):
-    return None
+    """
+    Docstring pour get_first
+    
+    :param l: Description
+    """
+    return l[0]
 
 def get_last(l):
-    return None
+    """
+    Docstring pour get_last
+    
+    :param l: Description
+    """
+    return l[-1]
 
 def get_max(l):
-    return None
+    """
+    Docstring pour get_max
+    
+    :param l: Description
+    """
+    return max(l)
 
 def get_min(l):
-    return None
+    """
+    Docstring pour get_min
+    
+    :param l: Description
+    """
+    return min(l)
 
 def get_sum(l):
-    return None
+    """
+    Docstring pour get_sum
+    
+    :param l: Description
+    """
+    return sum(l)
 
 
 #### Fonction principale
 
 
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    """
+    Docstring pour main
+    """
+    data = read_data(FILENAME)
+    for i, l in enumerate(data):
+        print(i, l)
+        k = 37
+        print(k, get_list_k(data, 37))
 
 
 if __name__ == "__main__":
